@@ -1,9 +1,19 @@
 import * as Glue from 'glue';
+import Swagger from "$plugins/swagger";
+import ApiVersion from "$plugins/api-version";
 
 const manifest:Glue.Manifest={
 	server: {
 		host: "localhost",
 		port: 8080,
+	},
+	register: {
+		plugins: [
+			"vision",
+			"inert",
+			Swagger,
+			ApiVersion
+		]
 	}
 }
 

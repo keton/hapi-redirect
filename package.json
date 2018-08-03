@@ -4,8 +4,8 @@
   "description": "HapiJS based URL shortener/redirector",
   "main": "dist/index.js",
   "scripts": {
-    "server": "npx ts-node -r tsconfig-paths/register ./src/www/index.ts",
-    "server-watch": "npx nodemon src/www/index.ts"
+    "server": "npx ts-node -r tsconfig-paths/register ./src/server/index.ts",
+    "server-watch": "npx nodemon src/server/index.ts"
   },
   "repository": {
     "type": "git",
