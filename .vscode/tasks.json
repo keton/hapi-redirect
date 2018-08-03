@@ -5,7 +5,7 @@
     "tasks": [
         {
             "type": "npm",
-            "script": "watch-server",
+            "script": "server-watch",
             "problemMatcher": [
                 "$tsc-watch"
             ],
