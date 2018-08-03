@@ -1,0 +1,50 @@
+{
+  "name": "hapi-redirect",
+  "version": "1.0.0",
+  "description": "HapiJS based URL shortener/redirector",
+  "main": "dist/index.js",
+  "scripts": {
+    "watch-server": "npx nodemon src/www/index.ts",
+    "tsc": "npx tsc",
+    "tsc-watch": "npx tsc --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keton/hapi-redirect.git"
+  },
+  "keywords": [
+    "HapiJS",
+    "URL",
+    "redirect"
+  ],
+  "author": "Michał Lower <https://github.com/keton>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/keton/hapi-redirect/issues"
+  },
+  "homepage": "https://github.com/keton/hapi-redirect#readme",
+  "devDependencies": {
+    "@types/boom": "^7.2.0",
+    "@types/glue": "^5.0.3",
+    "@types/hapi": "^17.0.17",
+    "@types/inert": "^5.1.1",
+    "@types/joi": "^13.4.0",
+    "@types/module-alias": "^2.0.0",
+    "@types/vision": "^5.3.4",
+    "nodemon": "^1.18.3",
+    "ts-node": "^7.0.0",
+    "tsconfig-paths": "^3.5.0",
+    "typescript": "^3.0.1"
+  },
+  "dependencies": {
+    "boom": "^7.2.0",
+    "glue": "^5.0.0",
+    "hapi": "^17.5.3",
+    "hapi-api-version": "^2.0.0",
+    "hapi-swagger": "^9.1.1",
+    "inert": "^5.1.0",
+    "joi": "^13.5.2",
+    "module-alias": "^2.1.0",
+    "vision": "^5.3.3"
+  }
+}

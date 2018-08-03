@@ -1,0 +1,12 @@
+{
+    "watch": [
+        "src"
+    ],
+    "ext": "ts",
+    "ignore": [
+        "src/**/*.spec.ts"
+    ],
+    "execMap": {
+        "ts": "npx ts-node -r tsconfig-paths/register"
+    }
+}
