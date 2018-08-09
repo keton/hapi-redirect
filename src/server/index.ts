@@ -1,8 +1,7 @@
 import * as Glue from 'glue';
-import Swagger from "$plugins/swagger";
-import ApiVersion from "$plugins/api-version";
 
-const manifest:Glue.Manifest={
+//TODO: move manifest into common config store
+const manifest: Glue.Manifest = {
 	server: {
 		host: "localhost",
 		port: 8080,
@@ -11,18 +10,18 @@ const manifest:Glue.Manifest={
 		plugins: [
 			"vision",
 			"inert",
-			Swagger,
-			ApiVersion
+			"$plugins/swagger",
+			"$plugins/api-version",
 		]
 	}
 }
 
 const runServer = async (): Promise<void> => {
-	
+
 	try {
 		//create HapiJS server from manifest
-		let server=await Glue.compose(manifest);	
-		
+		let server = await Glue.compose(manifest);
+
 		//display message on boot
 		server.events.once("start", () => {
 			console.log('Server running at:', server.info.uri);
