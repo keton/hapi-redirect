@@ -1,3 +1,6 @@
 {
-    "typescript.tsdk": "node_modules\\typescript\\lib"
+    "typescript.tsdk": "node_modules\\typescript\\lib",
+    "todo-tree.flat": true,
+    "todo-tree.grouped": false,
+    "todo-tree.expanded": true
 }
