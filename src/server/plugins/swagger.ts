@@ -1,6 +1,8 @@
 import * as Hapi from 'hapi';
+import { IConfig } from '$common/config';
+import { Config } from 'convict';
 
-const pkg = require('../../../package.json');
+const pkgInfo = require('../../../package.json');
 
 interface ISwaggerOptionsPathRepacement {
 	replaceIn?: 'groups' | 'endpoints' | 'all',
@@ -18,7 +20,7 @@ interface ISwaggerOptionsTag {
 }
 
 /** hapi-swagger plugin options schema */
-interface ISwaggerOptions {
+export interface ISwaggerOptions {
 	info: {
 		title: string,
 		description?: string,
@@ -62,21 +64,21 @@ interface ISwaggerOptions {
 	tags?: Array<ISwaggerOptionsTag>
 }
 
-//TODO: move configuration into common config store
-const options: ISwaggerOptions = {
+//default settings for swagger plugin
+export const swaggerDefaults: ISwaggerOptions = {
 	info: {
 		title: 'HapiJS URL shortener',
 		description: ' \
 				This is HapiJS URL shortener API demo \
 			',
-		version: pkg.version,
+		version: pkgInfo.version,
 		contact: {
 			name: 'Michal Lower',
 			email: 'keton22@gmail.com'
 		},
 		license: {
 			// Get the license from package.json
-			name: pkg.license
+			name: pkgInfo.license
 		}
 	},
 	documentationPath: '/swagger',
@@ -115,11 +117,21 @@ const options: ISwaggerOptions = {
 };
 
 export const register = (server: Hapi.Server) => {
-	return server.register({
-		plugin: require('hapi-swagger'),
-		options: options
+	return new Promise<void>(async (resolve,reject)=>{
+		try {
+			let config:Config<IConfig>=await server.methods["getConfig"]();
+			await server.register({
+				plugin: require('hapi-swagger'),
+				options: config.getProperties().pluginConfig.swagger
+			});
+			resolve();
+		} catch (error) {
+			reject(error);
+		}
 	});
 };
 
-export const name = "swagger-with-options";
-export const version = "1.0.0";
+export const pkg = { 
+	name: "swagger-with-options",
+	version: "1.0.0" 
+};

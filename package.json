@@ -26,23 +26,27 @@
     "nodemon": "^1.18.3"
   },
   "dependencies": {
-    "boom": "^7.2.0",
-    "glue": "^5.0.0",
-    "hapi": "^17.5.3",
-    "hapi-api-version": "^2.0.0",
-    "hapi-swagger": "^9.1.1",
-    "inert": "^5.1.0",
-    "joi": "^13.5.2",
-    "vision": "^5.3.3",
     "@types/boom": "^7.2.0",
+    "@types/convict": "^4.2.0",
+    "@types/dotenv": "^4.0.3",
     "@types/glue": "^5.0.3",
     "@types/hapi": "^17.0.17",
     "@types/inert": "^5.1.1",
     "@types/joi": "^13.4.0",
     "@types/module-alias": "^2.0.0",
     "@types/vision": "^5.3.4",
+    "boom": "^7.2.0",
+    "convict": "^4.3.2",
+    "dotenv": "^6.0.0",
+    "glue": "^5.0.0",
+    "hapi": "^17.5.3",
+    "hapi-api-version": "^2.0.0",
+    "hapi-swagger": "^9.1.1",
+    "inert": "^5.1.0",
+    "joi": "^13.5.2",
     "ts-node": "^7.0.0",
     "tsconfig-paths": "^3.5.0",
-    "typescript": "^3.0.1"
+    "typescript": "^3.0.1",
+    "vision": "^5.3.3"
   }
 }

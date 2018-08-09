@@ -1,26 +1,15 @@
 import * as Glue from 'glue';
-
-//TODO: move manifest into common config store
-const manifest: Glue.Manifest = {
-	server: {
-		host: "localhost",
-		port: 8080,
-	},
-	register: {
-		plugins: [
-			"vision",
-			"inert",
-			"$plugins/swagger",
-			"$plugins/api-version",
-		]
-	}
-}
+import { initConfig } from '$common/config';
 
 const runServer = async (): Promise<void> => {
 
 	try {
+		//initialize config store
+		//TODO: handle loading config files
+		let config = initConfig();
+
 		//create HapiJS server from manifest
-		let server = await Glue.compose(manifest);
+		let server = await Glue.compose(config.getProperties().manifest);
 
 		//display message on boot
 		server.events.once("start", () => {
@@ -35,6 +24,5 @@ const runServer = async (): Promise<void> => {
 		process.exit(1);
 	}
 }
-
 
 runServer();
