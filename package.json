@@ -32,7 +32,7 @@
     "@types/glue": "^5.0.3",
     "@types/hapi": "^17.0.17",
     "@types/inert": "^5.1.1",
-    "@types/joi": "^13.4.0",
+    "@types/joi": "^13.4.2",
     "@types/module-alias": "^2.0.0",
     "@types/vision": "^5.3.4",
     "boom": "^7.2.0",
