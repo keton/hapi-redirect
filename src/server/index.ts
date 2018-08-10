@@ -1,12 +1,12 @@
 import * as Glue from 'glue';
 import { initConfig } from '$common/config';
+import { ConfigVariables } from '$common/configVariables';
 
 const runServer = async (): Promise<void> => {
 
 	try {
 		//initialize config store
-		//TODO: handle loading config files
-		let config = initConfig();
+		let config = initConfig(process.env[ConfigVariables.configFile]);
 
 		//create HapiJS server from manifest
 		let server = await Glue.compose(config.getProperties().manifest);

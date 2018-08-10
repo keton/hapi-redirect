@@ -7,6 +7,6 @@
         "src/**/*.spec.ts"
     ],
     "execMap": {
-        "ts": "npx ts-node -r tsconfig-paths/register"
+        "ts": "npx ts-node -r tsconfig-paths/register -r dotenv/config"
     }
 }
