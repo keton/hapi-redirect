@@ -1,6 +1,7 @@
 {
     "recommendations": [
         "Gruntfuggly.todo-tree",
-        "mrmlnc.vscode-json5"
+        "mrmlnc.vscode-json5",
+        "mikestead.dotenv"
     ]
 }
