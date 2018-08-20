@@ -5,6 +5,7 @@ import Glue from 'glue';
 import { IApiVersionOptions, apiVersionDefaults } from '$plugins/api-version';
 import { ISwaggerOptions, swaggerDefaults } from '$plugins/swagger';
 import { ConfigVariables } from '$common/configVariables';
+import deepmerge from 'deepmerge';
 
 export interface IConfig {
 
@@ -151,10 +152,34 @@ export const initConfig = (configFile?: string) => {
 	try {
 		if (!configInitialized) {
 			config = Convict<IConfig>(ConfigSchema);
-			config.validate();
 			if (configFile) {
-				config.loadFile(configFile);
+				/**
+				 * Convict doesn't deep merge loaded config file with defaults.
+				 * 
+				 * If there's object within an object it'll be overwritten
+				 * 
+				 * So we perform deep merge of default config and partial defined in config file 
+				 */
+				//default configuration as per schema
+				let defConfig=config.getProperties();
+
+				//configuration applied in config file
+				let newConfig=Convict<IConfig>(ConfigSchema).loadFile(configFile).validate().getProperties();
+
+				//change deepmerge behaviour to overwrite old array with new one instead of merging, this is required for Hapi plugin list
+				const overwriteMerge = (destinationArray:any, sourceArray:any, options:any) => sourceArray;
+
+				//perform deep merge of configs
+				let mergedConfig=deepmerge<IConfig>(defConfig, newConfig, {arrayMerge: overwriteMerge});
+
+				//apply new settings to the config store
+				config.load(mergedConfig);
+
 			}
+
+			config.validate({
+				allowed: "strict"
+			});
 			configInitialized = true;
 		}
 	} catch (error) {
